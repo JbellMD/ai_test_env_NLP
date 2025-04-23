@@ -1,0 +1,24 @@
+{
+  "model_name": "bert-base-uncased",
+  "task": "classification",
+  "num_labels": 3,
+  "problem_type": "single_label_classification",
+  "training_params": {
+    "batch_size": 16,
+    "learning_rate": 5e-5,
+    "epochs": 3,
+    "max_grad_norm": 1.0,
+    "weight_decay": 0.01,
+    "warmup_steps": 0
+  },
+  "preprocessing_params": {
+    "max_length": 512,
+    "truncation": true,
+    "padding": "max_length",
+    "lowercase": true,
+    "remove_punctuation": false,
+    "remove_stopwords": false
+  },
+  "description": "BERT base model for generic text classification tasks",
+  "language": "en"
+}

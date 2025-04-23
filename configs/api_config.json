@@ -1,0 +1,31 @@
+{
+  "api_version": "1.0.0",
+  "host": "0.0.0.0",
+  "port": 8000,
+  "debug": false,
+  "log_level": "INFO",
+  "cors": {
+    "allow_origins": ["*"],
+    "allow_methods": ["*"],
+    "allow_headers": ["*"]
+  },
+  "rate_limiting": {
+    "enabled": true,
+    "requests_per_minute": 60
+  },
+  "default_models": {
+    "classification": "default_classification",
+    "ner": "default_ner",
+    "sentiment": "default_sentiment",
+    "summarization": "default_summarization"
+  },
+  "model_loading": {
+    "preload_models": ["default_classification", "default_ner", "default_sentiment"],
+    "lazy_load": true,
+    "cache_size": 5
+  },
+  "security": {
+    "require_api_key": false,
+    "enable_ssl": false
+  }
+}

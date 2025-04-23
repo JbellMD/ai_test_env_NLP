@@ -1,0 +1,24 @@
+{
+  "model_name": "distilbert-base-uncased",
+  "task": "classification",
+  "num_labels": 2,
+  "problem_type": "single_label_classification",
+  "training_params": {
+    "batch_size": 32,
+    "learning_rate": 5e-5,
+    "epochs": 3,
+    "max_grad_norm": 1.0,
+    "weight_decay": 0.01,
+    "warmup_steps": 0
+  },
+  "preprocessing_params": {
+    "max_length": 512,
+    "truncation": true,
+    "padding": "max_length",
+    "lowercase": true,
+    "remove_punctuation": false,
+    "remove_stopwords": false
+  },
+  "description": "DistilBERT model for efficient text classification with reduced parameters",
+  "language": "en"
+}
