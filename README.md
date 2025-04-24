@@ -1,4 +1,4 @@
-# NLP Toolkit for ReadyTensor
+# ModularNLP: A Unified Framework for Multi-Task NLP
 
 A comprehensive, modular, and extensible NLP toolkit supporting multiple tasks, models, and deployment options, designed for both research and production environments. This project provides a complete solution for building, training, evaluating, and deploying state-of-the-art NLP models across various tasks and domains.
 
