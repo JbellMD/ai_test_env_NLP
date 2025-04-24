@@ -1,8 +1,9 @@
 """
 Unit tests for the text preprocessing module.
 """
-import unittest
+
 import sys
+import unittest
 from pathlib import Path
 
 # Add parent directory to path to allow imports from src
@@ -17,14 +18,14 @@ class TestTextPreprocessor(unittest.TestCase):
     def setUp(self):
         """Set up for each test."""
         self.preprocessor = TextPreprocessor()
-        
+
     def test_normalize_text(self):
         """Test text normalization methods."""
         # Test basic normalization
         text = "This is a TEST with Mixed Case!!"
         normalized = self.preprocessor.normalize_text(text)
         self.assertEqual(normalized, "this is a test with mixed case!!")
-        
+
     def test_remove_special_chars(self):
         """Test removal of special characters."""
         text = "Hello, world! This has @special# $characters%."
@@ -34,7 +35,7 @@ class TestTextPreprocessor(unittest.TestCase):
         self.assertNotIn("#", cleaned)
         self.assertNotIn("$", cleaned)
         self.assertNotIn("%", cleaned)
-        
+
     def test_remove_stopwords(self):
         """Test stopword removal."""
         text = "This is a test with some stopwords."
@@ -45,15 +46,12 @@ class TestTextPreprocessor(unittest.TestCase):
         self.assertNotIn(" with ", " " + processed + " ")
         self.assertIn("test", processed)
         self.assertIn("stopwords", processed)
-        
+
     def test_preprocess_text(self):
         """Test the complete preprocessing pipeline."""
         text = "This is a TEST with @special# characters!"
         processed = self.preprocessor.preprocess_text(
-            text, 
-            normalize=True,
-            remove_special_chars=True,
-            remove_stopwords=True
+            text, normalize=True, remove_special_chars=True, remove_stopwords=True
         )
         # Result should be normalized, cleaned, and without stopwords
         self.assertEqual(processed.lower(), processed)
@@ -62,7 +60,7 @@ class TestTextPreprocessor(unittest.TestCase):
         self.assertNotIn(" is ", " " + processed + " ")
         self.assertNotIn(" a ", " " + processed + " ")
         self.assertIn("test", processed.lower())
-        
+
     def test_batch_preprocess(self):
         """Test batch preprocessing of texts."""
         texts = ["This is a TEST!", "Another example text."]

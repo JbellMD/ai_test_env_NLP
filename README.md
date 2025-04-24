@@ -1,6 +1,6 @@
-# NLP Toolkit
+# NLP Toolkit for ReadyTensor
 
-A comprehensive, modular, and extensible NLP toolkit supporting multiple tasks, models, and deployment options, designed for both research and production environments.
+A comprehensive, modular, and extensible NLP toolkit supporting multiple tasks, models, and deployment options, designed for both research and production environments. This project provides a complete solution for building, training, evaluating, and deploying state-of-the-art NLP models across various tasks and domains.
 
 ## Features
 
@@ -9,6 +9,9 @@ A comprehensive, modular, and extensible NLP toolkit supporting multiple tasks, 
 - **Advanced Training**: Parameter-efficient fine-tuning, few-shot learning, and ensemble models
 - **Comprehensive Evaluation**: Task-specific metrics, visualizations, and detailed reporting
 - **API-First Design**: FastAPI-based RESTful API with model registry and task-specific endpoints
+- **Extensive Testing**: Unit tests for all components ensuring reliability and quality
+- **Demo Notebooks**: Interactive examples showcasing capabilities and use cases
+- **Benchmark Results**: Performance metrics across models and tasks for informed decision-making
 - **Extensible Architecture**: Easily add new tasks, models, and customizations
 
 ## Installation
@@ -17,8 +20,8 @@ A comprehensive, modular, and extensible NLP toolkit supporting multiple tasks, 
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/nlp_toolkit.git
-cd nlp_toolkit
+git clone https://github.com/JbellMD/ai_test_env_NLP.git
+cd ai_test_env_NLP
 
 # Install the package in development mode
 pip install -e .
@@ -40,22 +43,43 @@ docker run -p 8000:8000 -p 8888:8888 -v $(pwd):/app nlp_toolkit
 ## Project Structure
 
 ```
-nlp_toolkit/
+ai_test_env_NLP/
 ├── configs/                # Configuration files
 │   ├── api_config.json     # API configuration
 │   └── model_configs/      # Model-specific configurations
-├── notebooks/              # Jupyter notebooks for demos and exploration
+├── notebooks/              # Jupyter notebooks for demos and benchmarks
+│   ├── 01_text_classification_demo.ipynb  # Classification examples
+│   ├── 02_named_entity_recognition_demo.ipynb  # NER examples
+│   ├── 03_text_summarization_demo.ipynb  # Summarization examples
+│   └── 04_benchmarking_results.ipynb  # Performance benchmarks
 ├── scripts/                # Command-line scripts
 │   ├── train.py            # Training script
 │   ├── evaluate.py         # Evaluation script
 │   └── deploy.py           # Deployment script
 ├── src/                    # Source code
 │   ├── api/                # API modules
+│   │   ├── app.py          # FastAPI application
+│   │   ├── routes.py       # API endpoints
+│   │   └── model_registry.py  # Model management
 │   ├── data/               # Data processing modules
+│   │   ├── data_loader.py  # Dataset loading
+│   │   └── preprocessing.py  # Text preprocessing
 │   ├── models/             # Model definitions
+│   │   ├── classifier.py   # Classification models
+│   │   ├── named_entity_recognition.py  # NER models
+│   │   ├── sentiment_analyzer.py  # Sentiment models
+│   │   └── summarizer.py   # Summarization models
 │   ├── training/           # Training utilities
+│   │   ├── trainer.py      # Training loops
+│   │   └── metrics.py      # Evaluation metrics
 │   └── utils/              # Utility functions
+│       ├── logging_utils.py  # Logging utilities
+│       └── visualization.py  # Visualization tools
 ├── tests/                  # Unit and integration tests
+│   ├── test_api/           # API tests
+│   ├── test_data/          # Data processing tests
+│   ├── test_models/        # Model tests
+│   └── test_training/      # Training tests
 ├── Dockerfile              # Docker configuration
 ├── requirements.txt        # Dependencies
 ├── setup.py                # Package installation
@@ -167,6 +191,49 @@ curl -X POST "http://localhost:8000/api/v1/classification/predict" \
   -d '{"text": "This is an example text", "model_id": "bert-base-uncased"}'
 ```
 
+## Testing
+
+The project includes comprehensive unit tests for all components:
+
+```bash
+# Run all tests
+pytest
+
+# Run specific test modules
+pytest tests/test_models/test_classifier.py
+
+# Run with coverage report
+pytest --cov=src tests/
+```
+
+## Demo Notebooks
+
+The `notebooks/` directory contains interactive examples demonstrating the toolkit's capabilities:
+
+1. **Text Classification Demo** (`01_text_classification_demo.ipynb`):
+   - Loading and preprocessing data for classification
+   - Training a transformer-based classifier
+   - Evaluating model performance with visualizations
+   - Making predictions on new data
+
+2. **Named Entity Recognition Demo** (`02_named_entity_recognition_demo.ipynb`):
+   - Using pre-trained NER models
+   - Fine-tuning on custom datasets
+   - Visualizing entity predictions
+   - Real-world text entity extraction
+
+3. **Text Summarization Demo** (`03_text_summarization_demo.ipynb`):
+   - Abstractive and extractive summarization techniques
+   - Comparing different summarization methods
+   - Evaluating summaries with ROUGE metrics
+   - Real-world document summarization
+
+4. **Benchmarking Results** (`04_benchmarking_results.ipynb`):
+   - Performance metrics across all tasks and models
+   - Comparative analysis of model architectures
+   - Speed/accuracy trade-offs
+   - Visualization of benchmark results
+
 ## Development
 
 ### Adding a New Task
@@ -176,12 +243,23 @@ curl -X POST "http://localhost:8000/api/v1/classification/predict" \
 3. Add task-specific metrics in `src/training/metrics.py`
 4. Add API endpoints in `src/api/routes.py`
 5. Update the model registry in `src/api/model_registry.py`
+6. Add tests in the appropriate `tests/` subdirectory
 
 ### Adding a New Model
 
 1. Create a model configuration in `configs/model_configs/`
 2. Implement or extend the appropriate model class
 3. Register the model in the model registry
+4. Add benchmarking results in the benchmark notebook
+
+## ReadyTensor Submission
+
+This project has been structured to meet the requirements for ReadyTensor NLP submission:
+
+1. **Technical Rigor**: Comprehensive implementation of multiple NLP tasks
+2. **Originality**: Advanced architectures and techniques beyond basic examples
+3. **Clarity**: Well-documented code with clear structure and API design
+4. **Practical Impact**: Ready-to-use for real-world applications with benchmarks
 
 ## License
 
@@ -193,4 +271,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - FastAPI
 - PyTorch
 - scikit-learn
+- sumy, rouge, nltk
 - And all other libraries used in this project
